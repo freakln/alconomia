@@ -66,7 +66,7 @@ class _LoginHomePageState extends State<LoginHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Container(
-                width: 300,
+                width: 350,
                 child: new TextFormField(
                   style: new TextStyle(
                       fontSize: 24.0, height: 2.0, color: Colors.black),
