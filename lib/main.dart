@@ -51,51 +51,54 @@ class _LoginHomePageState extends State<LoginHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        key: formkey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new TextFormField(
-              decoration: new InputDecoration(labelText: "E-mail"),
-              validator: (val) => !val.contains('@') ? 'E-mail invalido' : null,
-              onSaved: (val) => email = val,
-            ),
-            new TextFormField(
-              decoration: new InputDecoration(labelText: "Password"),
-              validator: (val) =>
-                  val.isEmpty ? 'A senha não pode ser vazia' : null,
-              onSaved: (val) => password = val,
-            ),
-            new Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-            ),
-            new RaisedButton(
-              child: new Text(
-                "login",
-                style: new TextStyle(color: Colors.white),
+
+        child: new Form(
+          key: formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Container(
+                width: 300,
+                child: new TextFormField(
+                  style: new TextStyle(
+                      fontSize: 24.0, height: 2.0, color: Colors.black),
+                  decoration: new InputDecoration(
+                      labelText: "E-mail",
+                      contentPadding: const EdgeInsets.only(bottom: -5.0)),
+                  validator: (val) =>
+                  !val.contains('@') ? 'E-mail invalido' : null,
+                  onSaved: (val) => email = val,
+                ),
               ),
-              color: Colors.blue,
-              onPressed: _submit,
-            )
-          ],
+              new TextFormField(
+                decoration: new InputDecoration(labelText: "Password"),
+                validator: (val) =>
+                val.isEmpty ? 'A senha não pode ser vazia' : null,
+                onSaved: (val) => password = val,
+              ),
+              new Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+              ),
+              new RaisedButton(
+                child: new Text(
+                  "login",
+                  style: new TextStyle(color: Colors.white),
+                ),
+                color: Colors.blue,
+                onPressed: _submit,
+              )
+            ],
+          ),
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
